@@ -8,6 +8,8 @@ class TemplateVariable:
 
     name: str
     required: bool = True
+    prompt: str | None = None
+    default: str | None = None
 
 
 @dataclass(frozen=True)

@@ -48,6 +48,8 @@ def _load_variables(
 
         name = variable.get("name")
         required = variable.get("required", True)
+        prompt = variable.get("prompt")
+        default = variable.get("default")
 
         if not isinstance(name, str) or not name.strip():
             raise TemplateLoadError(
@@ -59,7 +61,24 @@ def _load_variables(
                 f"Variable 'required' must be a boolean in {manifest_path}"
             )
 
-        variables.append(TemplateVariable(name=name, required=required))
+        if prompt and not isinstance(prompt, str):
+            raise TemplateLoadError(
+                f"Variable 'prompt' must be a string in {manifest_path}"
+            )
+
+        if default and not isinstance(default, str):
+            raise TemplateLoadError(
+                f"Variable 'default' must be a string in {manifest_path}"
+            )
+
+        variables.append(
+            TemplateVariable(
+                name=name,
+                required=required,
+                prompt=prompt,
+                default=default,
+            )
+        )
 
     return tuple(variables)
 

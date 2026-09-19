@@ -3,14 +3,14 @@ version: 0.1.0
 description: Basic Python scripting project
 
 variables:
-  - name: project_name
-    required: true
-
-  - name: package_name
-    required: true
-
   - name: description
     required: true
+    prompt: "Project description"
+
+  - name: author
+    required: false
+    prompt: "Author"
+    default: ""
 
 files:
   - source: README.md.j2
@@ -19,7 +19,7 @@ files:
   - source: pyproject.toml.j2
     destination: pyproject.toml
 
-  - source: .gitignore.j2
+  - source: gitignore.j2
     destination: .gitignore
 
   - source: src/{{ package_name }}/main.py.j2

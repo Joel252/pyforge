@@ -9,6 +9,7 @@ from pyforge.templates.registry import (
     TemplateNotFoundError,
     TemplateRegistry,
 )
+from pyforge.templates.variables import VariableResolver
 
 __all__ = [
     "DuplicateTemplateError",
@@ -18,4 +19,5 @@ __all__ = [
     "TemplateNotFoundError",
     "TemplateRegistry",
     "TemplateVariable",
+    "VariableResolver",
 ]
