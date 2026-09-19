@@ -1,0 +1,32 @@
+name: script
+version: 0.1.0
+description: Basic Python scripting project
+
+variables:
+  - name: project_name
+    required: true
+
+  - name: package_name
+    required: true
+
+  - name: description
+    required: true
+
+files:
+  - source: README.md.j2
+    destination: README.md
+
+  - source: pyproject.toml.j2
+    destination: pyproject.toml
+
+  - source: .gitignore.j2
+    destination: .gitignore
+
+  - source: src/{{ package_name }}/main.py.j2
+    destination: src/{{ package_name }}/main.py
+
+  - source: src/{{ package_name }}/__init__.py.j2
+    destination: src/{{ package_name }}/__init__.py
+
+  - source: tests/test_main.py.j2
+    destination: tests/test_main.py
